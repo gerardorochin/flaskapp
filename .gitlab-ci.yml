@@ -1,0 +1,8 @@
+buildjob:
+  stage: build
+  tags:
+    - gitlab-org-docker
+  script:
+    - docker build -t gerardorochin/gr-demo:latest
+    - docker image push gerardorochin/gr-demo:latest
+    - aws ecs update-service --cluster gr-demo --service gr-demo-service --force-new-deployment
