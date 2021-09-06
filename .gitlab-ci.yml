@@ -3,6 +3,6 @@ buildjob:
   tags:
     - gitlab-org-docker
   script:
-    - docker build --build-arg aws_access_key_id="$AWS_ACCESS_KEY_ID" --build-arg aws_secret_access_key="$AWS_SECRET_ACCESS_KEY" --build-arg aws_default_region="$AWS_DEFAULT_REGION" -t gerardorochin/gr-demo:latest .
+    - docker build --build-arg aws_access_key_id="$AWS_ACCESS_KEY_ID" --build-arg aws_secret_access_key="$AWS_SECRET_ACCESS_KEY" --build-arg aws_default_region="$AWS_DEFAULT_REGION" -t gerardorochin/flaskapp:latest .
     - docker image push gerardorochin/gr-demo:latest
-    - aws ecs update-service --cluster gr-demo --service gr-demo-service --force-new-deployment
+    - aws ecs update-service --cluster "$CI_AWS_ECS_CLUSTER" --service "$CI_AWS_ECS_SERVICE" --force-new-deployment
