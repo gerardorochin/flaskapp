@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "Hello, World v1.0.1"
+    return "Hello, World v1.0.2"
 
 @app.route("/secrets")
 def secrets():
